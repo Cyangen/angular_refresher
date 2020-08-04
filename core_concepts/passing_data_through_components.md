@@ -14,7 +14,7 @@ export class ParentComponent {
 }
 ```
 ```html
-//parent.component.html
+<!-- parent.component.html -->
 <div>
   <app-child-component [property]="value"></app-child-component>
 </div>
@@ -32,7 +32,7 @@ export class ChildComponent {
 }
 ```
 ```html
-//child.component.html
+<!-- child.component.html -->
 <h3>{{property}}</h3>
 ```
 
@@ -61,7 +61,7 @@ export class ChildComponent {
 
 
 ```html
-//parent.component.html
+<!-- parent.component.html -->
 <div>
   <app-child-component (customEvent)="handler($event)"></app-child-component>
 </div>
