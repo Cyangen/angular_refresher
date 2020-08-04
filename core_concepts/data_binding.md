@@ -72,7 +72,7 @@ When the event does `emit`, it passes the Event object in the form of $event. Th
 
 Emitting events from the handler, while possible, do not impact the template element. The binding is unidirectional after all.
 
-# Bidirectional Binding
+## Bidirectional Binding
 
 ```javascript
 // my.component.ts
