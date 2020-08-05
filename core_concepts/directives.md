@@ -18,6 +18,8 @@ Structural directives **change the structure of the DOM**, typically by adding, 
 
 Attribute directives **never destroy an element** from the DOM, they **only change the appearance or behavior** of one element.
 The built-in `NgStyle` Directive for example, can change several element styles at the same time.
+
+Here an example with **custom attribute directive**:
 ```html
 <!--src/app/app.component.html-->
 <p appHighlight>Highlight me!</p>
@@ -30,8 +32,26 @@ import { Directive, ElementRef } from '@angular/core';
   selector: '[appHighlight]'
 })
 export class HighlightDirective {
-    constructor(el: ElementRef) {
+    constructor(private el: ElementRef) {
        el.nativeElement.style.backgroundColor = 'yellow';
+    }
+}
+```
+
+Of course, you can use a better place than constructor:
+
+```typescript
+//src/app/highlight.directive.ts
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+    constructor(private el: ElementRef) {}
+
+    ngOnInit() {
+      this.el.nativeElement.style.backgroundColor = 'yellow';
     }
 }
 ```
