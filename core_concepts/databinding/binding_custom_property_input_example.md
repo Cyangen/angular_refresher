@@ -1,6 +1,6 @@
 # Introduction
 
-In this example, we will see how to bind a custom property using @Input decorator.
+In this example, you will see how to bind a custom property using @Input decorator.
 
 ## recap
 Using custom property binding to set the model property of a custom component is a great way for parent and child components to communicate.
@@ -66,7 +66,7 @@ AppComponent uses User model so that is imported. An array of type User is defin
     </app-user>
 </div>
 ```
-In the template with in the <app-user> selector users array is iterated using ngFor directive and each user instance is bound to the usr property of the child component.
+In the template with in the <app-user> selector users array is iterated using `ngFor` directive and each user instance is bound to the usr property of the child component.
 
 ### user.component.ts (Child component)
 ```typescript
