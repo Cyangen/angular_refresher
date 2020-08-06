@@ -8,6 +8,7 @@ Components are also a directive-with-a-template. The @Component decorator is a @
 ## Attribute and Structural Directives
 There are two types of directives: **attribute** and **structural** directives.
 
+### Structural directives
 Structural directives **change the structure of the DOM**, typically by adding, deleting, or modifying elements.
  An asterisk `(*)` precedes the directive attribute name.
 
@@ -15,7 +16,7 @@ Structural directives **change the structure of the DOM**, typically by adding, 
 <!--src/app/app.component.html-->
 <div *ngIf="hero" class="name">{{hero.name}}</div>
 ```
-
+### Attribute directives
 Attribute directives **never destroy an element** from the DOM, they **only change the appearance or behavior** of one element.
 The built-in `NgStyle` Directive for example, can change several element styles at the same time.
 
