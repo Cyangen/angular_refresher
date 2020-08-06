@@ -20,7 +20,6 @@ Structural directives **change the structure of the DOM**, typically by adding, 
 Attribute directives **never destroy an element** from the DOM, they **only change the appearance or behavior** of one element.
 The built-in `NgStyle` Directive for example, can change several element styles at the same time.
 
-Here an example with **custom attribute directive**:
 ```html
 <!--src/app/app.component.html-->
 <p appHighlight>Highlight me!</p>
@@ -56,3 +55,5 @@ export class HighlightDirective {
     }
 }
 ```
+
+## Using Rederer to build your directives
