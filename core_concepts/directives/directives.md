@@ -79,3 +79,5 @@ export class betterHighlightDirective implements ngOnInit {
 <!--app.component.html-->
 <p appBetterHighlight>Better Highlight directive!</p>
 ```
+
+You can find a list of Renderer2 methods [here](https://angular.io/api/core/Renderer2).
