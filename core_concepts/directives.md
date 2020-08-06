@@ -1,5 +1,5 @@
 
-#Intro
+# Intro
 Directives are the functions which will execute whenever Angular compiler finds it. Angular Directives enhance the capability of HTML elements by attaching custom behaviors to the DOM.
 
 Angular Directive is a class with a @Directive decorator. Decorators are functions that modify JavaScript classes. The decorators are used for attaching metadata to classes as it knows the configuration of those classes and how they should work.
