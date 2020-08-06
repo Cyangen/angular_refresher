@@ -4,6 +4,8 @@ To bind data and events across different components, you must use the `@Input` a
 ## From Parent to Child
 The `@Input` decorator indicates a member’s value is sourced from the parent function.
 
+
+#### Parent
 ```typescript
 //parent.component.ts
 @Component({
@@ -20,7 +22,7 @@ export class ParentComponent {
 </div>
 ```
 
-
+#### Child
 ```typescript
 //child.component.ts
 @Component({
@@ -39,7 +41,7 @@ export class ChildComponent {
 ## From Child to Parent
 `@Output` shows how an event travels from child to parent. Keep in mind that @Output almost always pertains to custom event bindings.
 
-
+#### Child
 ```html
 //child.component.html
 <button (click)="handleClick('Hello World')">Click Me!</button>
@@ -59,7 +61,7 @@ export class ChildComponent {
 }
 ```
 
-
+#### Parent
 ```html
 <!-- parent.component.html -->
 <div>
