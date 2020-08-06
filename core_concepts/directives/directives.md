@@ -21,11 +21,11 @@ Attribute directives **never destroy an element** from the DOM, they **only chan
 The built-in `NgStyle` Directive for example, can change several element styles at the same time.
 
 ```html
-<!--src/app/app.component.html-->
+<!--app.component.html-->
 <p appHighlight>Highlight me!</p>
 ```
 ```typescript
-//src/app/highlight.directive.ts
+//highlight.directive.ts
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
@@ -41,7 +41,7 @@ export class HighlightDirective {
 Of course, you can use a better place than constructor:
 
 ```typescript
-//src/app/highlight.directive.ts
+//highlight.directive.ts
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
