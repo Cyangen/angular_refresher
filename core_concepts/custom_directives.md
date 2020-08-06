@@ -6,7 +6,7 @@ Quick example of how create a custom Directives in angular.
 
 
 
-### src/app/highlight.directive.ts
+### highlight.directive.ts
 ```typescript
 import { Directive, ElementRef } from '@angular/core';
 
@@ -37,7 +37,7 @@ export class HighlightDirective {
 }
 ```
 
-### src/app/app.module.ts
+### app.module.ts
 Don't forget to add your directive in app.module.ts declarations:
 
 ```typescript
