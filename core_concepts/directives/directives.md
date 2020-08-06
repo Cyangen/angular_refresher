@@ -32,8 +32,8 @@ import { Directive, ElementRef } from '@angular/core';
   selector: '[appHighlight]'
 })
 export class HighlightDirective {
-    constructor(private el: ElementRef) {
-       el.nativeElement.style.backgroundColor = 'yellow';
+    constructor(private elementRef: ElementRef) {
+       elementRef.nativeElement.style.backgroundColor = 'yellow';
     }
 }
 ```
@@ -47,13 +47,35 @@ import { Directive, ElementRef } from '@angular/core';
 @Directive({
   selector: '[appHighlight]'
 })
-export class HighlightDirective {
-    constructor(private el: ElementRef) {}
+export class HighlightDirective implements ngOnInit {
+    constructor(private elementRef: ElementRef) {}
 
     ngOnInit() {
-      this.el.nativeElement.style.backgroundColor = 'yellow';
+      this.elementRef.nativeElement.style.backgroundColor = 'yellow';
     }
 }
 ```
 
-## Using Rederer to build your directives
+## Using Rederer to build better directives
+The **Renderer2** class is an abstraction provided by Angular in the form of a service that allows to manipulate elements of your app without having to touch the DOM directly. This is the recommended approach because it then makes it easier to develop apps that can be rendered in environments that don’t have DOM access, like on the server, in a web worker or on native mobile.
+
+```typescript
+//betterHighlight.directive.ts
+import { Directive, ElementRef, Renderer2 } from '@angular/core';
+
+@Directive({
+  selector: '[appBetterHighlight]'
+})
+export class betterHighlightDirective implements ngOnInit {
+    constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+
+    ngOnInit() {
+      this.rederer.setStyle(this.elementRef.nativeElement, 'background-color', 'yellow');
+    }
+}
+```
+
+```html
+<!--app.component.html-->
+<p appBetterHighlight>Better Highlight directive!</p>
+```
