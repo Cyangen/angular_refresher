@@ -37,7 +37,7 @@ export class ChildComponent {
 ```
 
 ## From Child to Parent
-@Output shows how an event travels from child to parent. Keep in mind that @Output almost always pertains to custom event bindings.
+`@Output` shows how an event travels from child to parent. Keep in mind that @Output almost always pertains to custom event bindings.
 
 
 ```html
