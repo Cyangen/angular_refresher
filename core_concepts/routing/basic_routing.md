@@ -52,11 +52,17 @@ export class AppModule { }
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <!-- routerLink directive used to navigate preventing default reloading page, keeping app state -->
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="servers">Servers</a></li>
+        <!-- routerLink directive used to navigate preventing reloading page behaviuor -->
+        <li role="presentation" class="active" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="servers">Servers</a>
+        </li>
         <!-- [routerLink] used to bind some non-string data -->
-        <li role="presentation"><a [routerLink]="['users']" routerLinkActive="router-link-active" </a></li>
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>
+        </li>
       </ul>
     </div>
   </div>
