@@ -1,5 +1,6 @@
 # Intro
-
+In Angular you can also programmatically navigate via a Router service we inject into our component.
+This is useful when you want trigger a navigation after doing something else in your methods.
 
 ```HTML
 <!-- home.component.html -->
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   onLoadServers() {
-    this.router.navigate(['/servers']);
+    // other code here
+    this.router.navigate(['/servers']); // navigating to an absolute path here
   }
 }
 ```
