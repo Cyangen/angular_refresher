@@ -54,9 +54,9 @@ export class AppModule { }
       <ul class="nav nav-tabs">
         <!-- routerLink directive used to navigate preventing default reloading page, keeping app state -->
         <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation"><a routerLink="servers">Servers</a></li>
         <!-- [routerLink] used to bind some non-string data -->
-        <li role="presentation"><a [routerLink]="['/users']" routerLinkActive="router-link-active" </a></li>
+        <li role="presentation"><a [routerLink]="['users']" routerLinkActive="router-link-active" </a></li>
       </ul>
     </div>
   </div>
