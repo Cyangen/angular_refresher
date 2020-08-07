@@ -3,7 +3,7 @@ In a **single-page app**, you change what the user sees by showing or hiding por
 
 To handle the navigation from one view to the next, you use the Angular `router`.
 The router enables navigation by interpreting a browser URL as an instruction to change the view.
-The router enables developers to build Single Page Applications with multiple views and allow navigation between these views.
+The router enables developers to build **Single Page Applications with multiple views** and allow navigation between these views.
 
 
 ```typescript
@@ -78,3 +78,16 @@ export class AppModule { }
   </div>
 </div>
 ```
+
+## The Router-Outlet
+The Router-Outlet is a `directive` that’s available from the router library where the Router inserts the `component` that gets matched based on the current browser’s URL.
+You can add multiple outlets in your Angular application which enables you to implement advanced routing scenarios.
+
+```html
+<router-outlet></router-outlet>
+```
+Any component that gets matched by the Router will render it as a sibling of the Router outlet.
+
+## The routerLink directive
+The Angular Router provides the `routerLink` directive to create navigation links.
+RouterLink directive is used to navigate preventing reloading page behavior
