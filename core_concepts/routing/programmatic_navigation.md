@@ -39,7 +39,7 @@ this will be the route which loaded this component.
 with that extra piece of information, Angular knows what our currently active route is.
 
 ```typescript
-//home.component.ts
+//servers.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ServersService } from './servers.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -59,7 +59,7 @@ export class ServersComponent implements OnInit {
     this.servers = this.serversService.getServers();
   }
 
-  onReoad() {
+  onReload() {
     this.router.navigate(['servers'], {relativeTo: this.route});
   }
 
