@@ -65,7 +65,6 @@ const appRoutes: Routes = [
   { path: 'servers/:id/edit', component: EditServerComponent}
 ];
 ```
-
 ```html
 <!-- servers.component.html -->
 <a
@@ -78,7 +77,7 @@ const appRoutes: Routes = [
 </a>
 ```
 
-### passing Fragments via rRuterLink
+### passing Fragments via RouterLink
 ```html
 <!-- servers.component.html -->
 <a
