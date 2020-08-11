@@ -105,3 +105,16 @@ const appRoutes: Routes = [
 ```
 
 # Retrieving Query params and Fragments
+
+You can use an observables to do this:
+
+```typescript
+  import { ActivatedRoute } from '@angular/router';
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe();
+    this.route.fragment.subscribe();
+  }
+```
