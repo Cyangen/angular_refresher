@@ -57,7 +57,6 @@ do so by subscribing to it.
 
 # Passing Query params and Fragments
 
-
 ### passing Query params via RouterLink
 ```typescript
 // app.module.ts
@@ -104,3 +103,5 @@ const appRoutes: Routes = [
     this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
   }
 ```
+
+# Retrieving Query params and Fragments
