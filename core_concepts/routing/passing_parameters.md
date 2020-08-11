@@ -43,4 +43,14 @@ export class UserComponent implements OnInit {
 
 ## About Observables
 
-In `user.compoent.ts`, `.params` is an observable.
+In `user.compoent.ts`, `.params` is an **Observable**.
+Basically, observables are a feature added by some other third-party package, not by Angular but heavily
+used by Angular which allow you to easily work with **asynchronous tasks**.
+This is an asynchronous task because the parameters of your currently loaded route might change
+at some point in the future if the user clicks this link.
+You don't know when, you didn't know if and you don't know how long it will take.
+So, you can't block your code and wait for this to happen here because it might never happen.
+An observable is an easy way to **subscribe** to some event which might happen in the future, to then execute
+some code when it happens without having to wait for it now.
+That is what `params` is. It is such an observable and as the name implies, we can **observe** it and we
+do so by subscribing to it.
