@@ -89,3 +89,18 @@ const appRoutes: Routes = [
   {{ server.name }}
 </a>
 ```
+
+### passing Query params and Fragments Programmatically
+
+```html
+<!--home.component.html-->
+<button (click)="onLoadServers(1)">Load Servers 1 </button>
+```
+
+```typescript
+  //home.component.ts
+  onLoadServers(id: number) {
+    // other code...
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
+  }
+```
