@@ -54,3 +54,9 @@ An observable is an easy way to **subscribe** to some event which might happen i
 some code when it happens without having to wait for it now.
 That is what `params` is. It is such an observable and as the name implies, we can **observe** it and we
 do so by subscribing to it.
+
+# Passing Query params and Fragents
+
+
+
+
