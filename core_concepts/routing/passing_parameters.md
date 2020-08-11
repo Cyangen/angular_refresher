@@ -58,5 +58,21 @@ do so by subscribing to it.
 # Passing Query params and Fragents
 
 
+```typescript
+// app.module.ts
+const appRoutes: Routes = [
+  { path: 'servers/:id/edit', component: EditServerComponent}
+];
+```
 
-
+```html
+<!-- servers.component.html -->
+<a
+  [routerLink] = "['/servers', 5 ,'edit']"
+  [queryParams] = "{allowEdit: 1}"
+  href="#"
+  class="list-group-item"
+  *ngFor="let server of servers">
+  {{ server.name }}
+</a>
+```
