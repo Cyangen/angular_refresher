@@ -55,9 +55,10 @@ some code when it happens without having to wait for it now.
 That is what `params` is. It is such an observable and as the name implies, we can **observe** it and we
 do so by subscribing to it.
 
-# Passing Query params and Fragents
+# Passing Query params and Fragments
 
 
+### passing Query params via RouterLink
 ```typescript
 // app.module.ts
 const appRoutes: Routes = [
@@ -70,6 +71,19 @@ const appRoutes: Routes = [
 <a
   [routerLink] = "['/servers', 5 ,'edit']"
   [queryParams] = "{allowEdit: 1}"
+  href="#"
+  class="list-group-item"
+  *ngFor="let server of servers">
+  {{ server.name }}
+</a>
+```
+
+### passing Fragments via rRuterLink
+```html
+<!-- servers.component.html -->
+<a
+  [routerLink] = "['/servers', 5 ,'edit']"
+  fragment = "loading"
   href="#"
   class="list-group-item"
   *ngFor="let server of servers">
