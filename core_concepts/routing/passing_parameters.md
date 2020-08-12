@@ -104,3 +104,14 @@ You can use an observables to do this:
     this.route.fragment.subscribe();
   }
 ```
+
+### preserve queryParams when navigating to routes
+
+`queryParamsHandling: 'preserve'` allow you to preserve queryParams when you navigating to other routes, for example when you use `navigate` method.
+
+```typescript
+  // server.component.ts
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+  }
+  ```
