@@ -42,6 +42,6 @@ const appRoutes: Routes = [
 ```
 
 When a user try to navigate to unknow route, he will be redirected to a 404 page.
-Make sure to put `**` route as **last route** in your `Routes` array
+Make sure to put `**` route as **last route** in your `Routes` list
 
 
