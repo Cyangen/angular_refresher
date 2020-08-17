@@ -107,7 +107,18 @@ export class AppModule { }
 
 
 ```typescript
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.canActivate(route, state);
-  }
+// auth-guard.service.ts
+canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  return this.canActivate(route, state);
+}
+```
+
+```typescript
+// app-routing.module.ts
+const appRoutes: Routes = [
+  { path: 'servers', canActivateChild: [AuthGuard], component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent},
+    { path: ':id/edit', component: EditServerComponent}
+  ]}
+];
 ```
