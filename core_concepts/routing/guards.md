@@ -15,8 +15,6 @@ Angular’s guard methods are available from `@angular/router`. To help them aut
 
 ## CanActivate Guard
 
-
-
 ```typescript
 // auth.service.ts
 export class AuthService {
@@ -105,8 +103,6 @@ export class AppModule { }
 ```
 
 ## Protecting child (nested) routes
-
-
 ```typescript
 // auth-guard.service.ts
 canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
