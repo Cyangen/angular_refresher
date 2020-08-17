@@ -1,7 +1,19 @@
 # INTRO
+Web applications often consist of public and private data. Both types of data tend to have their own pages with guarded routes. These routes allow/restrict access depending on the user’s privileges. Unauthorized users may interact with a guarded route. The route should block the user if he or she attempts to access its routed content.
 
+Angular provides a bundle of authentication guards that can attach to any route. These methods trigger automatically depending on how the user interacts with the guarded route.
 
+- `canActivate(...)` - fires when the user attempts to access a route
+- `canActivateChild(...)` - fires when the user attempts to access a route’s nested (child) routes
+- `canDeactivate(...)` - fires when the user attempts to leave a route
 
+Angular’s guard methods are available from `@angular/router`. To help them authenticate, they may optionally receive a few parameters. Such parameters do not inject via dependency injection. Under the hood, each value gets passed in as an argument to the invoked guard method.
+
+- `ActivatedRouteSnapshot` provides access to the route parameters of the guarded route.
+- `RouterStateSnapshot` exposes the URL (uniform resource locator) web address matching the route.
+- `Component` references the component rendered by the route.
+
+## CanActivate Guard
 ```typescript
 // auth.service.ts
 export class AuthService {
