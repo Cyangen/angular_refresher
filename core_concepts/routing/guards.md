@@ -121,6 +121,7 @@ const appRoutes: Routes = [
 ```
 
 ## CanDeactivate Guard
+Suppose of a situation where you are filling up a submission form and after filling the form you accidentally clicked on another navigation link. You will be redirected to accidentally clicked link or page and all the changes that have been made to the form gets discarded. So, in this case if you want to show user a confirmation or warning alert before it navigated to another link then you have to use Angular CanDeactivate route guard.
 
 ```typescript
 // canDeactivate-guard.service.ts
