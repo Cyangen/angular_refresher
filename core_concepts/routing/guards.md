@@ -102,3 +102,12 @@ import { AuthGuard } from './auth-guard.service';
 })
 export class AppModule { }
 ```
+
+## Protecting child (nested) routes
+
+
+```typescript
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    return this.canActivate(route, state);
+  }
+```
