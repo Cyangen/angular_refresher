@@ -14,6 +14,9 @@ Angular’s guard methods are available from `@angular/router`. To help them aut
 - `Component` references the component rendered by the route.
 
 ## CanActivate Guard
+
+
+
 ```typescript
 // auth.service.ts
 export class AuthService {
@@ -37,7 +40,6 @@ export class AuthService {
   }
 }
 ```
-
 
 ```typescript
 // auth-guard.service.ts
@@ -66,9 +68,7 @@ export class AuthGuard implements CanActivate {
 
 ```typescript
 // app-routing.module.ts
-// ...imports
 import { AuthGuard } from './auth-guard.service';
-
 
 const appRoutes: Routes = [
   { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
@@ -89,20 +89,9 @@ export class AppRoutingModule {}
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
-import { ServersComponent } from './servers/servers.component';
-import { UserComponent } from './users/user/user.component';
-import { EditServerComponent } from './servers/edit-server/edit-server.component';
-import { ServerComponent } from './servers/server/server.component';
-import { ServersService } from './servers/servers.service';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
-
 
 @NgModule({
   declarations: [
