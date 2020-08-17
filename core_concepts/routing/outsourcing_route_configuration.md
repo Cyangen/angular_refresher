@@ -1,4 +1,16 @@
 # INTRO
+In Angular, the best practice is to load and configure the router in a separate, top-level module that is dedicated to routing and imported by the root AppModule.
+
+By convention, the module class name is `AppRoutingModule` and it belongs in the `app-routing.module.ts` in the `src/app` folder.
+
+Use the CLI command:
+
+```cli
+ng generate module app-routing --flat --module=app
+```
+
+- --flat puts the file in src/app instead of its own folder.
+- --module=app tells the CLI to register it in the imports array of the AppModule.
 
 
 ```typescript
@@ -29,14 +41,16 @@ export class AppRoutingModule {
 }
 ```
 
-
 ```typescript
 // app.module.ts
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
-  // ...
+  declarations: [
+    // ...
+  ],
   imports: [
-    BrowserModule,
-    FormsModule,
     AppRoutingModule
   ],
   providers: [ServersService],
