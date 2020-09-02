@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.signUpForm = new FormGroup({
       'username': new FormControl('default username'),
-      'email': new FormControl(null)
+      'email': new FormControl(null),
+      'gender': new FormControl('male')
     });
   }
 }
@@ -48,3 +49,6 @@ Controls are basically just **key-value pairs** in the object we pass in `FormGr
 * the initial **value** of the control
 * a **single** or an **array** of validators
 * **asynchronous** validators
+
+
+## Syncing HTML and Form
