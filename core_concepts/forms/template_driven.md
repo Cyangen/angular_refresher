@@ -139,3 +139,24 @@ export class AppComponent {
   }
 }
 ```
+
+## Using ngModel with Two-Way-Binding
+Sometimes you not only want to pre-populate a default the user entered but you also want to instantly react to any changes.
+
+for example:
+
+```html
+<div class="form-group">
+  <textarea class="form-control" name="questionAnswer" rows="3" [(ngModel)]="answer"></textarea>
+</div>
+<p>Your reply: {{ answer }}</p>
+```
+```typescript
+export class AppComponent {
+  answer = '';
+
+  onSubmit(form: NgForm) {
+    console.log(this.signUpForm);
+  }
+}
+```
