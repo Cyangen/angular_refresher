@@ -32,3 +32,21 @@ At this point, you can call a function from your .ts file when a user click on a
   }
 ```
 
+## accessing the JS object
+
+To access to the JS object created automatically by Angular from `<form>` html element, you have to use a local reference equals to `ngForm` and then, pass that to your method:
+
+```html
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  ...
+</form>
+```
+
+then:
+
+```typescript
+  // app.component.ts
+  OnSubmit(form: ngForm) {
+    console.log(form)
+  }
+```
