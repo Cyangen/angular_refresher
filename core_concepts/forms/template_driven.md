@@ -160,3 +160,20 @@ export class AppComponent {
   }
 }
 ```
+
+## Patching Form Values
+Sometimes you want to programmatically patch a input value in your form avoiding overwriting others controls.
+You can use `patchValue()` method to obtain this:
+
+```typescript
+export class AppComponent {
+  @ViewChild('f') signUpForm:ngForm;
+
+  suggestUserName() {
+    const suggestedName = 'Superuser';
+    this.signUpForm.form.patchValue({
+      username: suggestedName
+    });
+  }
+}
+```
