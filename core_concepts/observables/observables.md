@@ -44,4 +44,25 @@ Output :
 
 From above, you can see, **both functions and observables are lazy**. We need to call (functions) or subscribe (observables) to get the results.
 
-Subscriptions to observables are quite similar to calling a function. But where observables are different is in their ability to **.return multiple values**. called **.streams**. (a stream is a sequence of data over time).
+Subscriptions to observables are quite similar to calling a function. But where observables are different is in their ability to **.return multiple values**. called **streams**. (a stream is a sequence of data over time).
+
+
+Observables not only able to return a value **synchronously**, but also **asynchronously**.
+
+```typescript
+var observable = Rx.Observable.create((observer: any) =>{
+   observer.next(‘Hi Observable’);
+    setTimeout(()=>{
+        observer.next(‘Yes, somehow understandable!’)
+    }, 1000)   
+
+   observer.next( ‘Am I understandable?’ );
+})
+
+output :
+
+‘Hi Observable’
+‘Am I understandable?’ 
+Yes, somehow understandable!’.
+```
+
