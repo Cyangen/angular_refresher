@@ -104,6 +104,17 @@ input.ng-invalid.ng-touched{
 ```
 `.ng-invalid` `.ng-touched` are css classes added by Angular when input validation fail. In this case, inputs will get a red  border if touched by user and if its will be invalid (according with your validation config).
 
+### Outputting Validation Error Messages
+
+```html
+  <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel">
+  <span *ngIf="!email.valid && email.touched" class="help-block">enter a valid email address</span>
+```
+A quick and easy way of getting access to the control created by Angular automatically is adding by adding a local reference equals to `ngModel` to this input here.
+So just like the form directive automatically added by Angular when it detects a form element, the
+`ngModel` directive here exposes some additional information about the control it creates for us on the overarching form by accessing ngModel.
+So with this, we could simply check or say that we want to attach this span here
+
 ### Which Validators do ship with Angular? 
 Check out the Validators class: <https://angular.io/api/forms/Validators> - these are all built-in validators, though that are the methods which actually get executed (and which you later can add when using the reactive approach).
 
