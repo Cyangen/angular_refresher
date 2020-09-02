@@ -32,7 +32,7 @@ At this point, you can call a function from your .ts file when a user click on a
   }
 ```
 
-## accessing the JS object
+## Accessing the JS object
 
 To access to the JS object created automatically by Angular from `<form>` html element, you have to use a local reference equals to `ngForm` and then, pass that to your method:
 
@@ -50,3 +50,30 @@ then:
     console.log(form)
   }
 ```
+
+## Accessing the Form with @ViewChild
+
+This is an alternative approach using @ViewChild.
+
+@ViewChild allowed you to access a local reference, an element controlled or which holds a local reference in our TypeScript code.
+
+You do just have such a local reference here:
+
+```html
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  ...
+</form>
+```
+and whilst that might not point to an element ref but to the ngForm object, it still is a local reference.
+
+```typescript
+export class AppComponent {
+  @ViewChild('f') signUpForm:ngForm;
+
+  onSubmit(form: NgForm) {
+    console.log(this.signUpForm);
+  }
+}
+```
+
+In your .ts file you can access to the element which has the local reference f on it using @ViewChild decorator.
