@@ -2,6 +2,7 @@
 Observables are also like callbacks and promises - that are responsible for handling async requests. Observables are a part of the RXJS library. This library introduced Observables.
 
 
+## How an observable is made
 Like promises, Observables also follow the **push model**, where the producer of data is king. Producer determines **when to send data to consumer**. The Consumer does not know when data is going to come.
 
 Here a basic example of how an observable is made:
@@ -66,3 +67,61 @@ output :
 Yes, somehow understandable!’.
 ```
 
+In short, you can say **observables are simply a function that are able to give multiple values over time, either synchronously or asynchronously**.
+
+
+## Observable Phases
+There are four stages through which observables pass:
+
+* Creation
+* Subscription.
+* Execution
+* Destruction.
+
+### Creation
+Creation of an observable is done using a **create** function.
+
+```typescript
+var observable = Rx.Observable.create((observer: any) =>{})
+```
+
+### Subscription
+To make an observable work, we have to **subscribe it**. This can be done using the **subscribe** method.
+
+```typescript
+observable.subscribe((data)=>{
+   console.log(data);    
+})
+```
+
+### Execution
+Execution of observables is what is inside of the create block.
+
+```typescript
+var observable = Rx.Observable.create((observer: any) =>{
+
+   observer.next(‘Hi Observable’);        
+    setTimeout(()=>{
+        observer.next(‘Yes, somehow understandable!’)
+    }, 1000)   
+
+   observer.next( ‘Am I understandable?’ );
+
+})
+```
+The above code inside the create function is observable execution. The three types of values that an observable can deliver to the subscriber are:
+
+```typescript
+observer.next(‘hii’);//this can be multiple (more than one)
+
+observer.error(‘error occurs’) // this call whenever any error occus.
+
+Observer.complete(‘completion of delivery of all values’) // this tells the subscriptions to observable is completed. No delivery is going to take place after this statement.
+```
+
+### Desctruction
+Last phase that comes into the market is destruction. After an error or a complete notification, the observable is automatically unsubscribed. But there are cases where we have to manually **unsubscribe** it. To manually do this task, just use:
+
+```typescript
+var subscription = observable.subscribe(x => console.log(x)); // Later: subscription.unsubscribe();
+```
