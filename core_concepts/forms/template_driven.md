@@ -75,5 +75,26 @@ export class AppComponent {
   }
 }
 ```
-
 In your .ts file you can access to the element which has the local reference f on it using @ViewChild decorator.
+
+## Input validation
+In the template-driven approach, you can only add this in the template:
+
+```html
+<input type="text" id="username" class="form-control" ngModel name="username" required >
+```
+
+`required` is a default HTML attribute,you can add to an input, however Angular will detect it,
+and it acts as a selector for a built-in directive shipping with Angular and it will automatically configure
+your form, to take this into account, to make sure that now this will be treated as `invalid` if it is empty.
+
+Moreover  Angular dynamically add some CSS classes, giving you information about the state of the individual control (if it is dirty or not,if you did change the initial value, if it touched or not, if you clicked into it or not or if it is valid or not).
+With that informations, you can style these inputs conditionally.
+
+### Which Validators do ship with Angular? 
+
+Check out the Validators class: <https://angular.io/api/forms/Validators> - these are all built-in validators, though that are the methods which actually get executed (and which you later can add when using the reactive approach).
+
+For the template-driven approach, you need the directives. You can find out their names, by searching for "validator" in the official docs: <https://angular.io/api?type=directive> - everything marked with "D" is a directive and can be added to your template.
+
+Additionally, you might also want to enable HTML5 validation (by default, Angular disables it). You can do so by adding the ngNativeValidate  to a control in your template.
