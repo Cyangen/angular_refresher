@@ -11,7 +11,6 @@ So, you have to register controls manually and in TD approach this is super simp
 ```
 
 ## ngSubmit directive
-
 The `ngSubmit` directive is used by Angular to make a form submittable.
 You can place on this `<form>` element as a whole:
 
@@ -33,7 +32,6 @@ At this point, you can call a function from your .ts file when a user click on a
 ```
 
 ## Accessing the JS object
-
 To access to the JS object created automatically by Angular from `<form>` html element, you have to use a local reference equals to `ngForm` and then, pass that to your method:
 
 ```html
@@ -52,7 +50,6 @@ then:
 ```
 
 ## Accessing the Form with @ViewChild
-
 This is an alternative approach using @ViewChild.
 
 @ViewChild allowed you to access a local reference, an element controlled or which holds a local reference in our TypeScript code.
@@ -88,11 +85,26 @@ In the template-driven approach, you can only add this in the template:
 and it acts as a selector for a built-in directive shipping with Angular and it will automatically configure
 your form, to take this into account, to make sure that now this will be treated as `invalid` if it is empty.
 
-Moreover  Angular dynamically add some CSS classes, giving you information about the state of the individual control (if it is dirty or not,if you did change the initial value, if it touched or not, if you clicked into it or not or if it is valid or not).
+### Dynamyc css classes by form state
+Moreover Angular traks the **state of each control** of the form (you can check that by having a look to JS object) 
+and consequently, dynamically add some CSS classes, giving you information about the state of the individual control (if it is dirty or not,if you did change the initial value, if it touched or not, if you clicked into it or not or if it is valid or not).
+
 With that informations, you can style these inputs conditionally.
 
-### Which Validators do ship with Angular? 
+For example you can disable the submit button if form is invalid and style it:
 
+```html
+<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+```
+You can disable the submit button dynamically by the form state, in this case if the form is invalid: `[disabled]="!f.valid"`
+```css
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+```
+`.ng-invalid` `.ng-touched` are css classes added by Angular when input validation fail. In this case, inputs will get a red  border if touched by user and if its will be invalid (according with your validation config).
+
+### Which Validators do ship with Angular? 
 Check out the Validators class: <https://angular.io/api/forms/Validators> - these are all built-in validators, though that are the methods which actually get executed (and which you later can add when using the reactive approach).
 
 For the template-driven approach, you need the directives. You can find out their names, by searching for "validator" in the official docs: <https://angular.io/api?type=directive> - everything marked with "D" is a directive and can be added to your template.
