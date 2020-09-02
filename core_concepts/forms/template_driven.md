@@ -10,3 +10,25 @@ So, you have to register controls manually and in TD approach this is super simp
 <input type="text" id="username" class="form-control" ngModel name="username">
 ```
 
+## ngSubmit directive
+
+The `ngSubmit` directive is used by Angular to make a form submittable.
+You can place on this `<form>` element as a whole:
+
+```html
+<form (ngSubmit)="onSubmit()">
+  ...
+</form>
+```
+
+`ngSubmit` actually only gives you one event you can listen to,so let's wrap it in parentheses.
+This event made available by the `ngSubmit` directive will be fired whenever this form is submitted, so whenever this default behavior is triggered.
+At this point, you can call a function from your .ts file when a user click on a submit button:
+
+```typescript
+  // app.component.ts
+  OnSubmit() {
+    console.log('form submitted')
+  }
+```
+
