@@ -23,3 +23,28 @@ and `formGroup` in your `component.ts` file:
 ```typescript
 import { FormGroup } from '@angular/forms';
 ```
+
+## Form creation
+
+```typescript
+// app.component.ts
+export class AppComponent implements OnInit {
+  genders = ['male', 'female'];
+
+  signUpForm: FormGroup;
+
+  ngOnInit(){
+    this.signUpForm = new FormGroup({
+      'username': new FormControl('default username'),
+      'email': new FormControl(null)
+    });
+  }
+}
+```
+
+Controls are basically just **key-value pairs** in the object we pass in `FormGroup()`.
+`new FormControl()` takes some parameters: 
+
+* the initial **value** of the control
+* a **single** or an **array** of validators
+* **asynchronous** validators
