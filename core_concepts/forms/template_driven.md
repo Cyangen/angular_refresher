@@ -177,3 +177,7 @@ export class AppComponent {
   }
 }
 ```
+
+```html
+<button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+```
