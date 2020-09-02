@@ -181,3 +181,17 @@ export class AppComponent {
 ```html
 <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
 ```
+
+## Reset form values and proprietes
+You can easy reset all form inputs values, propreties and validation status by using `reset()` method:
+
+```typescript
+export class AppComponent {
+  @ViewChild('f') signUpForm:ngForm;
+
+  suggestUserName() {
+    const suggestedName = 'Superuser';
+    this.signUpForm.reset();
+  }
+}
+```
