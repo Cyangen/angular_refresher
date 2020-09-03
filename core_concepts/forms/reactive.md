@@ -25,7 +25,6 @@ import { FormGroup } from '@angular/forms';
 ```
 
 ## Form creation
-
 ```typescript
 // app.component.ts
 export class AppComponent implements OnInit {
@@ -111,6 +110,34 @@ export class AppComponent implements OnInit {
       'email': new FormControl(null),
       'gender': new FormControl('male')
     });
+  }
+}
+```
+
+## Submitting the form
+You can submit the form simply using the `ngSubmit` directive:
+
+```html
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()"></form>
+```
+
+```typescript
+// app.component.ts
+export class AppComponent implements OnInit {
+  genders = ['male', 'female'];
+
+  signUpForm: FormGroup;
+
+  ngOnInit(){
+    this.signUpForm = new FormGroup({
+      'username': new FormControl('default username'),
+      'email': new FormControl(null),
+      'gender': new FormControl('male')
+    });
+  }
+
+  onSubmit(){
+    console.log(this.signUpForm);
   }
 }
 ```
