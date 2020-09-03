@@ -141,3 +141,19 @@ export class AppComponent implements OnInit {
   }
 }
 ```
+
+## Validation
+
+```typescript
+  ngOnInit(){
+    this.signUpForm = new FormGroup({
+      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'gender': new FormControl('male')
+    });
+  }
+```
+
+Do non use `()` on `Validators` methods, because you don't want to call it.
+it is a static method made available by validators here,instead you only want to pass the reference to this method.
+Angular will execute the method whenever it detects that the input of this FormControl changed, so it just needs to have a reference on what it should execute at this point of time.
