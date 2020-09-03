@@ -143,7 +143,6 @@ export class AppComponent implements OnInit {
 ```
 
 ## Validation
-
 ```typescript
   ngOnInit(){
     this.signUpForm = new FormGroup({
@@ -157,3 +156,19 @@ export class AppComponent implements OnInit {
 Do non use `()` on `Validators` methods, because you don't want to call it.
 it is a static method made available by validators here,instead you only want to pass the reference to this method.
 Angular will execute the method whenever it detects that the input of this FormControl changed, so it just needs to have a reference on what it should execute at this point of time.
+
+## Getting access to controls
+If you want to display something based on your form state, in the reactive approach you can use the `signUpForm.get()` method.
+It allows you to get access to your controls easily:
+
+```html
+<div class="form-group">
+  <label for="username">Username</label>
+  <input
+    type="text"
+    id="username"
+    class="form-control"
+    formControlName="username">
+  <span class="help-block" *ngIf="signUpForm.get('username').valid && signUpForm.get('username').touched">please enter a valid username</span>
+</div>
+```
