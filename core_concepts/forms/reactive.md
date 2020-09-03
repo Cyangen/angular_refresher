@@ -172,3 +172,71 @@ It allows you to get access to your controls easily:
   <span class="help-block" *ngIf="signUpForm.get('username').valid && signUpForm.get('username').touched">please enter a valid username</span>
 </div>
 ```
+
+## Dynamic adding form controls
+
+```typescript
+export class AppComponent implements OnInit {
+
+  signUpForm: FormGroup;
+
+  ngOnInit(){
+    this.signUpForm = new FormGroup({
+      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'gender': new FormControl('male'),
+      'hobbies': new FormArray([])
+    });
+  }
+
+  getControls() {
+    return (<FormArray>this.signUpForm.get('hobbies')).controls;
+  }
+
+  onAddHobby(){
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.signUpForm.get('hobbies')).push(control)
+  }
+}
+```
+First of all, create a new `FormArray` control in your `signUpForm`, this control will be your array of dynamic controls (hobby) added by user.
+
+`onAddHobby()` will be fired when the user clicks on your "add hobby" button (see below in HTML code), it will **create** a `new FormControl` (your hobby) and **push** it in your hobbies controls array.
+
+**IMPORTANT:** make sure to tell TypeScript that this is of type FormArray to not get an error, by using `(<FormArray>)` when you get your **hobbies controls array**. Like this:
+
+
+```typescript
+(<FormArray>this.signUpForm.get('hobbies')).push(control)
+```
+
+now, everything enclosed in these outer parentheses is treated as `FormArray`,so now you can push a new control on this array, if you would have not casted this, you would get an error.
+
+`getControls()` is a method that let you get all your hobby controls for looping through `*ngFfor` in your html template.
+
+Normally you would have done in this way:
+
+```html
+<!-- !!!!NOT WORKING!!!! -->
+<div class="form-group" *ngFor="let hobby of signUpForm.get('hobbies').controls; let i = index">
+  <input type="text" class="form-control" [formControlName]="i">
+</div>
+```
+
+But this code will produce an error.
+`getControls()` is an adjustment due to the way TS works and Angular parses your templates (it doesn't understand TS there).
+
+Finally you have to update your html template:
+
+```html
+<div formArrayName="hobbies">
+  <h4>hobbies</h4>
+  <button class="btn btn-default" type="button" (click)="onAddHobby()">add hobby</button>
+  <div class="form-group" *ngFor="let hobby of getControls(); let i = index">
+    <input type="text" class="form-control" [formControlName]="i">
+  </div>
+</div>
+```
+
+`formArrayName` used to link your template to your ts code.
+`*ngFor="let hobby of getControls(); let i = index"` used to extract array element index to be used as name in `[formControlName]` and link correctly your control.
