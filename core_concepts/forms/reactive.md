@@ -270,3 +270,35 @@ so this will be of type FormControl, a validator also needs to return something 
 able to handle the return value correctly.
 
 `{[s:string]: boolean}` is what type of return we expect, in this case an object with a **key string** and a **boolean value**
+
+
+## Using Error Codes
+
+
+
+
+
+## Custom Async Validator
+typically, you might need to reach out to a web server to check this.
+That however is an asynchronous operation because the response is not coming back instantly, instead it just takes a couple of seconds.
+
+```typescript
+ngOnInit(){
+  this.signUpForm = new FormGroup({
+    'email': new FormControl(null, [Validators.required, Validators.email], this.forbittenEmails),
+  });
+}
+
+forbittenEmails(control: FormControl): Promise<any> | Observable<any> {
+  const promise = new Promise<any>((resolve, reject) => {
+    setTimeout(() => {
+      if(control.value === "test@gmail.com"){
+        resolve({'emailIsForbitten': true});
+      } else {
+        resolve(null);
+      }
+    },1500)
+  });
+  return promise;
+}
+```
