@@ -98,8 +98,6 @@ The final result will be:
 </form>
 ```
 
-HTML form connected with our typescript code:
-
 ```typescript
 // app.component.ts
 export class AppComponent implements OnInit {
