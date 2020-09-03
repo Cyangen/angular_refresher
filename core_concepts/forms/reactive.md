@@ -246,12 +246,27 @@ Finally you have to update your html template:
 
 A validator in the end is just a function which gets executed by Angular automatically when it checks the validity of the FormControl and it checks that validity whenever you change that control.
 
+```typescript
+forbittenUserNames = ['anna','rock'];
 
+ngOnInit(){
+  this.signUpForm = new FormGroup({
+    'username': new FormControl(null, [Validators.required, this.forbittenNames.bind(this)]),
+    'email': new FormControl(null, [Validators.required, Validators.email]),
+    'gender': new FormControl('male'),
+    'hobbies': new FormArray([])
+  });
+}
 
-
-
-
-
+forbittenNames(control: FormControl): {[s:string]: boolean} {
+  if(this.forbittenUserNames.indexOf(control.value) !== -1){
+    return {'nameIsForbitten':true}
+  }
+  return null;
+}
+```
 Now a validator to work correctly needs to receive an argument which is the control it should check,
 so this will be of type FormControl, a validator also needs to return something for Angular to be
 able to handle the return value correctly.
+
+`{[s:string]: boolean}` is what type of return we expect, in this case an object with a **key string** and a **boolean value**
