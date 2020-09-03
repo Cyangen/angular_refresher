@@ -158,7 +158,7 @@ it is a static method made available by validators here,instead you only want to
 Angular will execute the method whenever it detects that the input of this FormControl changed, so it just needs to have a reference on what it should execute at this point of time.
 
 ## Getting access to controls
-If you want to display something based on your form state, in the reactive approach you can use the `signUpForm.get()` method.
+In the reactive approach you can use the `signUpForm.get()` method.
 It allows you to get access to your controls easily:
 
 ```html
@@ -240,3 +240,18 @@ Finally you have to update your html template:
 
 `formArrayName` used to link your template to your ts code.
 `*ngFor="let hobby of getControls(); let i = index"` used to extract array element index to be used as name in `[formControlName]` and link correctly your control.
+
+
+## Custom validators
+
+A validator in the end is just a function which gets executed by Angular automatically when it checks the validity of the FormControl and it checks that validity whenever you change that control.
+
+
+
+
+
+
+
+Now a validator to work correctly needs to receive an argument which is the control it should check,
+so this will be of type FormControl, a validator also needs to return something for Angular to be
+able to handle the return value correctly.
