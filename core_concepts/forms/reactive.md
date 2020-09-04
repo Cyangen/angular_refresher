@@ -325,3 +325,21 @@ ngOnInit(){
   );
 }
 ```
+
+## Setting and Patching Values
+
+```typescript
+this.signUpForm.setValue({
+  'username': 'Theo',
+  'email': 'theo@gmail.com',
+  'gender': 'male',
+  'hobbies': []
+});
+
+this.signUpForm.patchValue({
+  'username': 'Theo'
+});
+```
+
+`setValue` will replace your current object with this one.
+`patchValue` will update your current object (or a part of it) with this one.
