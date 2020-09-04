@@ -302,3 +302,26 @@ forbittenEmails(control: FormControl): Promise<any> | Observable<any> {
   return promise;
 }
 ```
+
+## Tracking Status and Values changes of your form
+You can track constantly status and salues **changes** of your form thanks to a couple of **observables**
+
+
+```typescript
+ngOnInit(){
+  this.signUpForm = new FormGroup({
+    'username': new FormControl(null, [Validators.required, this.forbittenNames.bind(this)]),
+    'email': new FormControl(null, [Validators.required, Validators.email], this.forbittenEmails),
+    'gender': new FormControl('male'),
+    'hobbies': new FormArray([])
+  });
+
+  this.signUpForm.valueChanges.subscribe(
+    (value) => console.log(value)
+  );
+
+  this.signUpForm.statusChanges.subscribe(
+    (value) => console.log(value)
+  );
+}
+```
