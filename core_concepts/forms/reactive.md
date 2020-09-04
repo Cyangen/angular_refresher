@@ -339,7 +339,10 @@ this.signUpForm.setValue({
 this.signUpForm.patchValue({
   'username': 'Theo'
 });
+
+this.signUpForm.reset();
 ```
 
-`setValue` will replace your current object with this one.
-`patchValue` will update your current object (or a part of it) with this one.
+`setValue()` will replace your current object with this one.
+`patchValue()` will update your current object (or a part of it) with this one.
+`reset()` will reset your values. You can pass an object to `reset()` to reset specific values.
