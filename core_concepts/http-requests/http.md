@@ -49,3 +49,34 @@
     .subscribe(posts => {console.log(posts); });
   }
   ```
+
+  ## Using Types with the HttpClient
+
+  ```typescript
+  // post.model.ts
+  export interface Post {
+    title: string;
+    content: string;
+    id?: string;
+  }
+  ```
+  ```typescript
+  // app.component.ts
+    private fetchPosts() {
+    this.http
+    // define the type here
+    .get<{[key: string]: Post}>('your url here')
+
+    .pipe(map(responseData => {
+      console.log(responseData);
+      const postArray: Post[] = [];
+      for (const key in responseData){
+        if (responseData.hasOwnProperty(key)) {
+          postArray.push({...responseData[key], id: key});
+        }
+      }
+      return postArray;
+    }))
+    .subscribe(posts => {console.log(posts); });
+  }
+  ```
