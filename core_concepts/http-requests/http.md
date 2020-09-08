@@ -1,7 +1,6 @@
 
 
 ## POST request
-
 ```typescript
   onCreatePost(postData: { title: string; content: string }) {
     this.http
@@ -17,7 +16,6 @@
 
 
   ## GET request
-
   ```typescript
   private fetchPosts() {
     this.http.get('your url here').subscribe(posts => {
@@ -32,7 +30,6 @@
   ```
 
   ## RxJS Operators to Transform Response Data
-
   ```typescript
     private fetchPosts() {
     this.http.get('your url here')
@@ -51,7 +48,6 @@
   ```
 
   ## Using Types with the HttpClient
-
   ```typescript
   // post.model.ts
   export interface Post {
@@ -72,7 +68,7 @@
 
       // define the type here as a Post array
       const postArray: Post[] = [];
-      
+
       for (const key in responseData){
         if (responseData.hasOwnProperty(key)) {
           postArray.push({...responseData[key], id: key});
