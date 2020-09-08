@@ -12,7 +12,7 @@
         console.log(responseData);
       });
   }
-  ```
+```
 
 ## GET request
 ```typescript
@@ -26,7 +26,7 @@ private fetchPosts() {
 onFetchPosts() {
   this.fetchPosts();
 }
-  ```
+```
 
 ## RxJS Operators to Transform Response Data
 ```typescript
@@ -79,4 +79,18 @@ export interface Post {
 }
 ```
 
+## Handling errors
 
+### use observables error handling
+
+```typescript
+ngOnInit(){
+  this.isLoading = true;
+  this.postService.fetchPosts().subscribe(posts => {
+    this.isLoading = false;
+    this.loadedPosts = posts;
+  }, error => {
+    console.log(error);
+  });
+}
+```
