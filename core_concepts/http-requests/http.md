@@ -69,7 +69,10 @@
 
     .pipe(map(responseData => {
       console.log(responseData);
+
+      // define the type here as a Post array
       const postArray: Post[] = [];
+      
       for (const key in responseData){
         if (responseData.hasOwnProperty(key)) {
           postArray.push({...responseData[key], id: key});
