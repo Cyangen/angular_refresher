@@ -4,14 +4,29 @@
 
 ```typescript
   onCreatePost(postData: { title: string; content: string }) {
-    // Send Http request
     this.http
       .post(
-        'your endpoint here',
+        'your url here',
         postData
       )
       .subscribe(responseData => {
         console.log(responseData);
       });
+  }
+  ```
+
+
+  ## GET request
+
+  ```typescript
+  private fetchPosts() {
+    this.http.get('your url here').subscribe(posts => {
+      console.log(posts);
+    });
+  }
+  ```
+  ```typescript
+  onFetchPosts() {
+    this.fetchPosts();
   }
   ```
