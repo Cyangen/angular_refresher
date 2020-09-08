@@ -42,6 +42,10 @@ export class Postservice {
       return postArray;
     }));
   }
+
+  deletePost() {
+    return this.http.delete('url here');
+  }
 }
 ```
 
@@ -84,9 +88,11 @@ export class AppComponent implements OnInit {
       this.loadedPosts = posts;
     });
   }
-
+  
   onClearPosts() {
-    // Send Http request
+    this.postService.deletePost().subscribe(() => {
+      this.loadedPosts = [];
+    });
   }
 }
 ```
