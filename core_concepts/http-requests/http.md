@@ -81,9 +81,9 @@ export interface Post {
 
 ## Handling errors
 
-### use observables error handling
-
+### Use observable error handling
 ```typescript
+// app.component.ts
 ngOnInit(){
   this.isLoading = true;
   this.postService.fetchPosts().subscribe(posts => {
@@ -92,5 +92,44 @@ ngOnInit(){
   }, error => {
     console.log(error);
   });
+}
+```
+
+### Using Subjects
+
+Useful when you send request and don't subscribe to it in your component.
+Especially if you have multiple places in your app that might be interested in that error.
+
+```typescript
+// post.service.ts
+createAndStorePosts(title: string, content: string){
+  const postData: Post = {title, content};
+  this.http
+    .post<{name: string}>(
+      'url here',
+      postData
+    )
+    .subscribe(responseData => {
+      console.log(responseData);
+    },
+    error => {
+      this.error.next(error.message);
+    });
+}
+```
+
+```typescript
+// app.component.ts
+error = null;
+private errorSub: Subscription;
+
+ngOnInit(){
+  this.errorSub = this.postService.error.subscribe(errorMessage => {
+    this.error = errorMessage;
+  });
+}
+
+ngOnDestroy() {
+  this.errorSub.unsubscribe();
 }
 ```
