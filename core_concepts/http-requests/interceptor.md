@@ -99,3 +99,38 @@ export class AuthInterceptorService implements HttpInterceptor {
 
 For interacting, you have to use the `pipe()` method on `next.handle(httpRequest)` and use all `RxJS` operators you want,
 like `map()` for example. 
+
+## Error Handling
+
+We can leverage Interceptors to also handle HTTP errors. We have a few options on how to handle these HTTP errors. We could log errors through the Interceptors or show UI notifications when something has gone wrong. In this example, however, we will add logic that will retry failed API requests.
+
+```typescript
+@Injectable()
+export class RetryInterceptor implements HttpInterceptor {
+  intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(httpRequest).pipe(retry(2));
+  }
+}
+```
+
+In our request handler, we can use the RxJS `retry()`, operator. The `retry` operator allows us to retry failed Observable streams that have thrown errors. Angular’s HTTP service uses Observables which allow us to re-request our HTTP call. The `retry` operator takes a parameter of the number of retries we would like. In our example, we use a parameter of 2, which totals to three attempts, the first attempt plus two additional retries. If none of the requests succeed, then, the Observable throws an error to the subscriber of the HTTP request Observable.
+
+```typescript
+@Component({
+  selector: 'app-retry',
+  template: `<pre>{{ data | json }}</pre>`
+})
+export class RetryComponent implements OnInit {
+  data: {};
+
+  constructor(private httpClient: HttpClient) { }
+
+  ngOnInit() {
+    this.httpClient.get('https://example.com/404').pipe(
+      catchError(err => of('there was an error')) // return a Observable with a error message to display
+    ).subscribe(data => this.data = data);
+  }
+}
+```
+
+In our component, when we make a bad request, we still can catch the error using the `catchError` operator. This error handler will only be called after the final attempt in our Interceptor has failed.
