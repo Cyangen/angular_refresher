@@ -140,7 +140,7 @@ ngOnDestroy() {
 fetchPosts(){
   return this.http
   .get<{[key: string]: Post}>(
-    'https://angular-tutorial-http-37e3a.firebaseio.com/posts.json',
+    '',
     {
       headers: new HttpHeaders({'custom-header': 'hello'})
     }
