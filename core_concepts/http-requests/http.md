@@ -135,12 +135,11 @@ ngOnDestroy() {
 ```
 
 ## Setting Headers
-
 ```typescript
 fetchPosts(){
   return this.http
   .get<{[key: string]: Post}>(
-    '',
+    'url here',
     {
       headers: new HttpHeaders({'custom-header': 'hello'})
     }
@@ -159,6 +158,45 @@ fetchPosts(){
   catchError(errorRes => {
     return throwError(errorRes);
   })
+  );
+}
+```
+
+## Adding Query Params
+```typescript
+fetchPosts(){
+  return this.http
+  .get<{[key: string]: Post}>(
+    'url here',
+    {
+      headers: new HttpHeaders({'custom-header': 'hello'}),
+      params: new HttpParams().set('print', 'pretty')
+    }
+  )
+  .pipe(
+    // ...
+  );
+}
+```
+
+You ca also set multiple params:
+
+```typescript
+let searchParams = new new HttpParams();
+searchParams = searchParams.append('print','pretty');
+searchParams = searchParams.append('custom','key');
+
+fetchPosts(){
+  return this.http
+  .get<{[key: string]: Post}>(
+    'url here',
+    {
+      headers: new HttpHeaders({'custom-header': 'hello'}),
+      params: searchParams
+    }
+  )
+  .pipe(
+    // ...
   );
 }
 ```
