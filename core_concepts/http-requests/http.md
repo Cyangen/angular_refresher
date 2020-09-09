@@ -90,13 +90,13 @@ ngOnInit(){
     this.isLoading = false;
     this.loadedPosts = posts;
   }, error => {
+    this.isLoading = false;
     console.log(error);
   });
 }
 ```
 
 ### Using Subjects
-
 Useful when you send request and don't subscribe to it in your component.
 Especially if you have multiple places in your app that might be interested in that error.
 
@@ -131,5 +131,34 @@ ngOnInit(){
 
 ngOnDestroy() {
   this.errorSub.unsubscribe();
+}
+```
+
+## Setting Headers
+
+```typescript
+fetchPosts(){
+  return this.http
+  .get<{[key: string]: Post}>(
+    'https://angular-tutorial-http-37e3a.firebaseio.com/posts.json',
+    {
+      headers: new HttpHeaders({'custom-header': 'hello'})
+    }
+  )
+  .pipe(map(responseData => {
+    console.log(responseData);
+    const postArray: Post[] = [];
+    // tslint:disable-next-line: forin
+    for (const key in responseData){
+      if (responseData.hasOwnProperty(key)) {
+        postArray.push({...responseData[key], id: key});
+      }
+    }
+    return postArray;
+  }),
+  catchError(errorRes => {
+    return throwError(errorRes);
+  })
+  );
 }
 ```
