@@ -52,19 +52,19 @@ Observables not only able to return a value **synchronously**, but also **asynch
 
 ```typescript
 var observable = Rx.Observable.create((observer: any) =>{
-   observer.next(‘Hi Observable’);
+   observer.next('Hi Observable');
     setTimeout(()=>{
-        observer.next(‘Yes, somehow understandable!’)
+        observer.next('Yes, somehow understandable!')
     }, 1000)   
 
-   observer.next( ‘Am I understandable?’ );
+   observer.next( 'Am I understandable?' );
 })
 
 output :
 
-‘Hi Observable’
-‘Am I understandable?’ 
-Yes, somehow understandable!’.
+'Hi Observable'
+'Am I understandable?' 
+'Yes, somehow understandable!'.
 ```
 
 In short, you can say **observables are simply a function that are able to give multiple values over time, either synchronously or asynchronously**.
@@ -100,23 +100,23 @@ Execution of observables is what is inside of the create block.
 ```typescript
 var observable = Rx.Observable.create((observer: any) =>{
 
-   observer.next(‘Hi Observable’);        
+   observer.next('Hi Observable');        
     setTimeout(()=>{
-        observer.next(‘Yes, somehow understandable!’)
+        observer.next('Yes, somehow understandable!')
     }, 1000)   
 
-   observer.next( ‘Am I understandable?’ );
+   observer.next( 'Am I understandable?' );
 
 })
 ```
 The above code inside the create function is observable execution. The three types of values that an observable can deliver to the subscriber are:
 
 ```typescript
-observer.next(‘hii’);//this can be multiple (more than one)
+observer.next('hi');//this can be multiple (more than one)
 
-observer.error(‘error occurs’) // this call whenever any error occus.
+observer.error('error occurs') // this call whenever any error occus.
 
-Observer.complete(‘completion of delivery of all values’) // this tells the subscriptions to observable is completed. No delivery is going to take place after this statement.
+Observer.complete('completion of delivery of all values') // this tells the subscriptions to observable is completed. No delivery is going to take place after this statement.
 ```
 
 ### Desctruction
