@@ -3,10 +3,10 @@ Getters and setters (also known as accessors) were introduced to JavaScript when
 
 **Getters and setters** are another way for you to provide access to the properties of an object.
 
-
-
-
-
+* It gives simpler syntax
+* It allows equal syntax for properties and methods
+* It can secure better data quality
+* It is useful for doing things behind-the-scenes
 
 ##  using underscore variables
 The getter/setter cannot have the name that matches the property name,
